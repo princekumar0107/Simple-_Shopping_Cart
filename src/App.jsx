@@ -1,26 +1,24 @@
-import React from 'react'
-import ProductList from "./Components/ProductList";
-import CartSummary from "./Components/CartSummary";
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import ProductList from "./components/ProductList";
+import CartPage from "./components/CartPage";
 import { CartProvider } from "./context/CartContext";
 import "./index.css";
 
-function App() {
-
-    
+const App = () => {
   return (
-    <>
     <CartProvider>
-      <div className="app">
-        <h1>Simple Shopping Cart</h1>
-        <div className="container">
-          <ProductList />
-          <CartSummary />
+    <Router>
+     <div className="app">
+      <h1>Simple Shopping Cart</h1>
+      <Routes>
+          <Route path="/" element={<ProductList />} />
+          <Route path="/cart" element={<CartPage />} />
+      </Routes>
         </div>
-      </div>
+      </Router>
     </CartProvider>
-      
-    </>
-  )
-}
+  );
+};
 
-export default App
+export default App;
